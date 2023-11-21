@@ -8,7 +8,7 @@
 {% block container %}
     <ul>
         {% for user in users %}
-            {# <li> {{ user.name }} a {{ user.age }} ans, donc cette personne est ... 
+            <li> {{ user.name }} a {{ user.age }} ans, donc cette personne est ... 
                 {% if user.age >= 18 %}
                 <strong> majeure </strong>
                 {% elseif user.age < 10 %}
@@ -16,7 +16,7 @@
                 {% else %}
                 <strong> mineure </strong>
                 {% endif %}
-            </li> #}
+            </li>
 
             <li class="user-item">
                 <div class="user-picture">
