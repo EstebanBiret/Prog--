@@ -1,17 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BlogController!{% endblock %}
+{% block title %}The Blog{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Article {{ id }} ✅</h1>
-    <h2>Article name : {{ name }} ✅</h1>    
-</div>
+    <div class="articles">
+        {% for article in articles %}
+            {# <div class="article-item"> #}
+            <a href="{{ path('app_single_article', {'slug': article.slug}) }}" class="article-item">
+                <div class="article-image">
+                    <img src={{ article.imageUrl }} width="300" height="300" alt="Image de l'article : {{ article.title }}">
+                </div>
+                <div class="article-details-flex">
+                    <div class="article-author-details">
+                        <div class="article-author-picture"> 
+                            <img src={{ article.author.profile.picture }} width="50" height="50" alt="Image de profil de : {{ article.author.name }}">       
+                        </div>
+                    </div>
+                    <div class="article-content-details">
+                        <h2 class="article-title"> {{ article.title }} </h2>
+                        <div class="article-createdAt"> {{ article.fromNow }} </div>
+                    </div>
+                </div>
+            </a> 
+            {# </div> #}
+        {% endfor %}
+    </div>
+
 {% endblock %}
 
 

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}The Blog{% endblock %}
+
+{% block body %}
+
+    <div class="single-article">
+        <div class="article-image">
+            <img src={{ article.imageUrl }} width="300" height="300" alt="Image de l'article : {{ article.title }}">
+        </div>
+        <div class="article-details">
+            <div class="article-author-picture"> 
+                <img src={{ article.author.profile.picture }} width="50" height="50" alt="Image de profil de : {{ article.author.name }}">       
+            </div>
+            <div class="article-content-details">
+                <h2 class="article-title"> {{ article.title }} </h2>
+                <div class="article-createdAt"> {{ article.fromNow }} </div>
+            </div>
+            <div class="content"> {{ article.content }} </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

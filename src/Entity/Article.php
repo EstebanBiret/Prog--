@@ -2,15 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ArticleRepository;
+use EsperoSoft\DateFormat\DateFormat;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Cocur\Slugify\Slugify;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
-class Article
-{
+class Article {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -33,10 +34,14 @@ class Article
 
     #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'articles')]
     private Collection $categories;
+    private ?string $fromNow = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
 
     public function __construct()
     {
@@ -145,5 +150,34 @@ class Article
         $this->author = $author;
 
         return $this;
+    }
+
+    /**
+     * Get the value of fromNow
+     */ 
+    public function getFromNow() : string {
+        return DateFormat::fromNow($this->createdAt);
+    }
+
+    /**
+     * Get the value of slug
+     */ 
+    public function getSlug() {
+        return $this->slug;
+    }
+
+    /**
+     * Set the value of slug
+     *
+     * @return  self
+     */ 
+    public function setSlug($slug) {
+        $this->slug = $slug;
+        return $this;
+    }
+
+    public function slugify($string) {
+        $slugify = new Slugify();
+        return $slugify->slugify($string);
     }
 }
