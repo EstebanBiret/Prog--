@@ -51,10 +51,15 @@ class BlogFixtures extends Fixture
         $categories = [];
         for($i=0;$i<5; $i++){
             $dateC = DateTimeImmutable::createFromMutable($faker->dateTime());
-            $category = (new Category())->setName($faker->sentence(2))
+            $name = $faker->sentence(2);
+            $category = (new Category())->setName($name)
                                         ->setDescription($faker->paragraph())  
                                         ->setImageUrl("https://picsum.photos/360/360?image=".($i+200))
                                         ->setCreatedAt($dateC);
+
+            $slug = $category->slugify($name);
+            $category->setSlug($slug);
+
             $categories[] = $category;
             $manager->persist($category);
             $manager->flush();
@@ -62,12 +67,17 @@ class BlogFixtures extends Fixture
         
         for($i=0;$i<100; $i++){
             $dateArt = DateTimeImmutable::createFromMutable($faker->dateTime());
-            $article = (new Article())->setTitle($faker->sentence(3))
+            $title = $faker->sentence(3);
+            $article = (new Article())->setTitle($title)
                                         ->setContent($faker->text(80))  
                                         ->setImageUrl("https://picsum.photos/360/360?image=".($i+300))
                                         ->setCreatedAt($dateArt)
                                         ->setAuthor($users[rand(0,count($users)-1)])
                                         ->addCategory($categories[rand(0,count($categories)-1)]);
+            
+            $slug = $article->slugify($title);
+            $article->setSlug($slug);
+
             $manager->persist($article);
             $manager->flush();
         }

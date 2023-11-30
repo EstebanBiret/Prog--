@@ -6,6 +6,7 @@ use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Cocur\Slugify\Slugify;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
@@ -32,6 +33,9 @@ class Category
 
     #[ORM\ManyToMany(targetEntity: Article::class, inversedBy: 'categories')]
     private Collection $articles;
+
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
 
     public function __construct()
     {
@@ -125,5 +129,27 @@ class Category
         $this->articles->removeElement($article);
 
         return $this;
+    }
+
+    /**
+     * Get the value of slug
+     */ 
+    public function getSlug() {
+        return $this->slug;
+    }
+
+    /**
+     * Set the value of slug
+     *
+     * @return  self
+     */ 
+    public function setSlug($slug) {
+        $this->slug = $slug;
+        return $this;
+    }
+
+    public function slugify($string) {
+        $slugify = new Slugify();
+        return $slugify->slugify($string);
     }
 }

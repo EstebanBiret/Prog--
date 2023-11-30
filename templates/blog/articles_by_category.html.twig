@@ -3,12 +3,14 @@
 {% block title %}The Blog{% endblock %}
 
 {% block body %}
-        <div class="articles-infos">Il y a {{ articles | length}} articles en tout !</div>
+    <div class="articles-infos"> 
+        <p> Article(s) de la catégorie : <strong> {{ category.name }}</strong></p>
+        <strong>{{ articles | length}} </strong> article(s) trouvé(s) !
+    </div>
 
     <div class="articles">
 
         {% for article in articles %}
-            {# <div class="article-item"> #}
             <a href="{{ path('app_single_article', {'slug': article.slug}) }}" class="article-item">
                 <div class="article-image">
                     <img src={{ article.imageUrl }} width="300" height="300" alt="Image de l'article : {{ article.title }}">
@@ -25,7 +27,6 @@
                     </div>
                 </div>
             </a> 
-            {# </div> #}
         {% endfor %}
     </div>
 
