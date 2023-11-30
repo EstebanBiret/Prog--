@@ -3,10 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ArticleRepository;
-<<<<<<< HEAD
 use App\Repository\CategoryRepository;
-=======
->>>>>>> 0dcd25f1c1443fcd314c95358cd62d717d9dd68f
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,7 +23,6 @@ class BlogController extends AbstractController {
     }
 
     #[Route('/blog/articles', name: 'app_blog_articles')]
-<<<<<<< HEAD
     public function showArticles(ArticleRepository $repoArticle, CategoryRepository $repoCategory): Response {
         $articles = $repoArticle->findAll();
         $categories = $repoCategory->findAll();
@@ -34,19 +30,10 @@ class BlogController extends AbstractController {
         return $this->render('blog/index.html.twig', [
             'articles' => $articles,
             'categories' => $categories
-=======
-    public function showArticles(ArticleRepository $repoArticle): Response {
-        $articles = $repoArticle->findAll();
-        // $slug = $repoArticle->getSlug();
-        // dd($articles);
-        return $this->render('blog/index.html.twig', [
-            'articles' => $articles
->>>>>>> 0dcd25f1c1443fcd314c95358cd62d717d9dd68f
         ]);
     }
 
     #[Route('/blog/article/{slug}', name: 'app_single_article')]
-<<<<<<< HEAD
     public function single(ArticleRepository $repoArticle, CategoryRepository $repoCategory, string $slug): Response {
         $article = $repoArticle->findOneBySlug($slug);
         $categories = $repoCategory->findAll();
@@ -71,12 +58,6 @@ class BlogController extends AbstractController {
             'articles' => $articles,
             'categories' => $categories,
             'category' => $category
-=======
-    public function single(ArticleRepository $repoArticle, string $slug): Response {
-        $article = $repoArticle->findOneBySlug($slug);
-        return $this->render('blog/single.html.twig', [
-            'article' => $article
->>>>>>> 0dcd25f1c1443fcd314c95358cd62d717d9dd68f
         ]);
     }
 }

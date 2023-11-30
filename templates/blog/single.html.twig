@@ -15,7 +15,6 @@
             <div class="article-content-details">
                 <h2 class="article-title"> {{ article.title }} </h2>
                 <div class="article-createdAt"> {{ article.fromNow }} </div>
-<<<<<<< HEAD
                 <div class="article-categories flex wrap">
                     {% for category in article.categories %}
                         <a href="{{ path('app_articles_by_category', {'slug': category.slug}) }}" class="article-category-item badge">
@@ -23,8 +22,6 @@
                         </a>
                     {% endfor %}
                 </div>
-=======
->>>>>>> 0dcd25f1c1443fcd314c95358cd62d717d9dd68f
             </div>
             <div class="content"> {{ article.content }} </div>
         </div>
