@@ -6,7 +6,10 @@
     border: 1px solid #ccc;
     box-shadow: 2px 2px 13px #ccc;
     border-radius: 15px;
+<<<<<<< HEAD
     border: 5px solid var(--main-color);
+=======
+>>>>>>> 0dcd25f1c1443fcd314c95358cd62d717d9dd68f
 }
 
 .single-article .article-image img {
@@ -16,17 +19,29 @@
 
 .single-article .article-details {
     padding: 20px 0;
+<<<<<<< HEAD
     gap: 10px;
+=======
+>>>>>>> 0dcd25f1c1443fcd314c95358cd62d717d9dd68f
 }
 
 .content{
     text-align: justify;
     line-height: 1.5;
+<<<<<<< HEAD
     border-radius: 15px;
     padding: 10px;}
+=======
+    margin-top: 20px;
+}
+>>>>>>> 0dcd25f1c1443fcd314c95358cd62d717d9dd68f
 
 .single-article {
     display: flex;
     flex-direction: column;
     align-items: center;
+<<<<<<< HEAD
+=======
+    margin-top: 100px;
+>>>>>>> 0dcd25f1c1443fcd314c95358cd62d717d9dd68f
 }

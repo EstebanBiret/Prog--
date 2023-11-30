@@ -5,7 +5,11 @@ body {
 }
 
 header {
+<<<<<<< HEAD
     background: var(--main-gradient);
+=======
+    background: linear-gradient(var(--main-color), rgb(0, 198, 198), var(--main-color));
+>>>>>>> 0dcd25f1c1443fcd314c95358cd62d717d9dd68f
     color: white;
     height: 80px;
     display: flex;
@@ -26,14 +30,20 @@ header h2 {
 
 .container {
     width: 90%;
+<<<<<<< HEAD
     max-width: 1500px;
     margin: 50px auto;
+=======
+    max-width: 1400px;
+    margin: 20px auto;
+>>>>>>> 0dcd25f1c1443fcd314c95358cd62d717d9dd68f
 }
 
 .flex {
     display: flex;
 }
 
+<<<<<<< HEAD
 .flex-1 {
     flex:1;
 }
@@ -46,6 +56,8 @@ header h2 {
     /* border: 1px solid white; */
 }
 
+=======
+>>>>>>> 0dcd25f1c1443fcd314c95358cd62d717d9dd68f
 .aic {
     align-items: center;
 }
@@ -58,6 +70,7 @@ a {
     color: inherit;
     text-decoration: none;
 }
+<<<<<<< HEAD
 
 .badge {
     background-color: var(--main-color);
@@ -115,3 +128,5 @@ footer ul li {
     line-height: 1.2;
     padding-bottom: 15px;
 }
+=======
+>>>>>>> 0dcd25f1c1443fcd314c95358cd62d717d9dd68f

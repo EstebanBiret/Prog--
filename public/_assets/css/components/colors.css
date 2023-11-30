@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* :root{
     --main-color: #008080;
     --main-color-white: rgb(0, 198, 198);
@@ -28,3 +29,8 @@
     --main-color-white: rgb(255, 155, 32);
     --main-gradient: linear-gradient(var(--main-color), var(--main-color-white), var(--main-color));
 } */
+=======
+:root {
+    --main-color: #008080;
+}
+>>>>>>> 0dcd25f1c1443fcd314c95358cd62d717d9dd68f
