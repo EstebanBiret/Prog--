@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article index{% endblock %}
+
+{% block body %}
+    <h1>Article index</h1>
+    
+        {% for notice in app.flashes('notice') %}
+        <div class = "notices">
+            {{ notice }}
+        </div>
+        {% endfor %}
+    
+    <a id="new" href="{{ path('app_article_new') }}"><img src="../_assets/images/plus.jpg" width="60px" style="border-radius: 50px; border: 1px solid black;" alt="Create New"></a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>ImageUrl</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>Slug</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.content }}</td>
+                 <td>
+                    {% if article.imageUrl %}
+                        <img src="{{ article.imageUrl }}" alt="Image" width="180px">
+                    {% else %}
+                        Aucune image
+                    {% endif %}
+                </td>
+
+                <td>{{ article.createdAt ? article.createdAt|date('d/m/Y H:i:s') : '' }}</td>
+                <td>{{ article.updatedAt ? article.updatedAt|date('d/m/Y H:i:s') : '' }}</td>
+                <td>{{ article.slug }}</td>
+                <td>
+                    <a href="{{ path('app_article_show', {'id': article.id}) }}"><img id="eye" src="../_assets/images/eye.png" width="60px" alt="Show"></a>
+                    <a href="{{ path('app_article_edit', {'id': article.id}) }}"><img id="pencil" src="../_assets/images/pencil.png" width="60px" alt="Edit"></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# Un plaisir inégalé #}
+    <audio src="../_assets/music.mp3" loop="" autoplay="autoplay"></audio>
+    <img id="music" src="../_assets/images/music.png" width="60px" alt="A little bit of music !">
+
+    <script> 
+    document.getElementById('music').addEventListener('click', function() {
+        document.querySelector('audio').volume = 0.2;
+        document.querySelector('audio').play();
+    });
+    </script>
+
+{% endblock %}
