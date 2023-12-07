@@ -35,6 +35,10 @@ header h2 {
     width: 90%;
     max-width: 1500px;
     margin: 50px auto;
+    max-width: 1500px;
+    margin: 50px auto;
+    max-width: 1400px;
+    margin: 20px auto;
 }
 
 .flex {
@@ -80,6 +84,7 @@ a {
     background: var(--main-gradient);
     margin-top: 20px;
     margin-bottom: 20px;
+
 }
 
 footer {
@@ -175,3 +180,4 @@ th, td {
     font-size: 20px;
     margin-top: 40px;
 }
+
